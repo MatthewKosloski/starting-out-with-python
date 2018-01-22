@@ -7,5 +7,5 @@ Programming exercises from [Starting Out with Python (3rd edition)](https://www.
 I installed the latest version of Python (version 3.6).  To use Python in script mode:
 
 ```
-	$ python3.6 file_to_run.py
+$ python3.6 file_to_run.py
 ```
