@@ -3,7 +3,7 @@
 
 ANOTHER = 'y'
 
-DEBUG = True
+DEBUG = False
 
 TIME_UNIT = 'Seconds'
 MASS_UNIT = 'Kilograms'
