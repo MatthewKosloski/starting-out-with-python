@@ -26,12 +26,12 @@ def main():
 def run_unit_tests():
 	print('Running unit tests for Pet...\n')
 
-	# Test accessors
+	# Test mutators
 	set_name_test()
 	set_animal_type_test()
 	set_age_test()
 
-	# Test mutators
+	# Test accessors
 	get_name_test()
 	get_animal_type_test()
 	get_age_test()
