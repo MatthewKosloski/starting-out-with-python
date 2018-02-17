@@ -20,11 +20,11 @@ def main():
 
 			again = input('Again? (y/n): ')
 	else:
-		run_tests()
+		run_unit_tests()
 
 
-def run_tests():
-	print('Running tests for Pet...\n')
+def run_unit_tests():
+	print('Running unit tests for Pet...\n')
 
 	# Test accessors
 	set_name_test()
@@ -40,19 +40,19 @@ def set_name_test():
 	the_pet = Pet('Joe', 'Dog', 20)
 	new_name = 'Robert'
 	the_pet.set_name(new_name)
-	test('set_name()', the_pet.get_name(), new_name)
+	test('set_name()', the_pet._Pet__name, new_name)
 
 def set_animal_type_test():
 	the_pet = Pet('Adam', 'Fly', 0.01)
 	new_animal_type = 'Giraffe'
 	the_pet.set_animal_type(new_animal_type)
-	test('set_animal_type()', the_pet.get_animal_type(), new_animal_type)
+	test('set_animal_type()', the_pet._Pet__animal_type, new_animal_type)
 
 def set_age_test():
 	the_pet = Pet('Cameron', 'Cat', 11)
 	new_age = 12
 	the_pet.set_age(new_age)
-	test('set_age()', the_pet.get_age(), new_age)
+	test('set_age()', the_pet._Pet__age, new_age)
 
 def get_name_test():
 	name = 'Ian'
