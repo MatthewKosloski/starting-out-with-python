@@ -1,7 +1,7 @@
 from pet import Pet
 
 AGAIN = 'y'
-DEBUG = True
+DEBUG = False
 
 def main():
 
