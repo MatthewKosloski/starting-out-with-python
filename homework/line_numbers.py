@@ -1,9 +1,6 @@
 # Matthew Kosloski
-#
-# Program asks the user for the 
-# name of a file. The contents
-# of the file should be printed
-# and preceeded with a line number.
+# Exercise 6-3
+# CPSC 3310-01 SP2018
 
 def main():
 

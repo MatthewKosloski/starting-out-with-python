@@ -1,5 +1,6 @@
-# Exercise 5: Physics
 # Matthew Kosloski
+# Exercise 5
+# CPSC 3310-01 SP2018
 
 ANOTHER = 'y'
 

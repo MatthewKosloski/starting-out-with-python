@@ -1,3 +1,7 @@
+# Matthew Kosloski
+# Exercise 10-1
+# CPSC 3310-01 SP2018
+
 class Pet:
 
 	def __init__(self, name, animal_type, age):
