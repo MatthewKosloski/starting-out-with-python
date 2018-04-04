@@ -124,6 +124,7 @@ def has_unique_cells(square, size):
 	@param square {list}
 	@param size {int}
 	@param magic_const {int}
+	@return {bool}
 '''
 def has_magic_rows(square, size, magic_const):
 	row_sums = []
@@ -140,6 +141,7 @@ def has_magic_rows(square, size, magic_const):
 	@param square {list}
 	@param size {int}
 	@param magic_const {int}
+	@return {bool}
 '''
 def has_magic_cols(square, size, magic_const):
 	col_sums = []
@@ -158,6 +160,7 @@ def has_magic_cols(square, size, magic_const):
 	@param square {list}
 	@param size {int}
 	@param magic_const {int}
+	@return {bool}
 '''
 def has_magic_left_diagonal(square, size, magic_const):
 	col_sums = []
@@ -174,6 +177,7 @@ def has_magic_left_diagonal(square, size, magic_const):
 	@param square {list}
 	@param size {int}
 	@param magic_const {int}
+	@return {bool}
 '''
 def has_magic_right_diagonal(square, size, magic_const):
 	col_sums = []
