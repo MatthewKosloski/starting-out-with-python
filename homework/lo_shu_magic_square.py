@@ -42,7 +42,7 @@ def main():
 	list is indeed a Lo Shu Magic Square.
 
 	@param {list} square
-	@param coolean
+	@param {bool}
 '''
 def is_magic_square(square):
 	try:
