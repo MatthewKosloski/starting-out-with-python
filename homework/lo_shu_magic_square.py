@@ -29,38 +29,71 @@ class SquareSizeError(Error):
 
 def main():
 
-	square = [
+	valid_square = [
 		[8, 1, 6],
 		[3, 5, 7],
 		[4, 9, 2]
 	]
 
-	print(is_magic_square(square))
+	invalid_square = [
+		[9, 4, 1],
+		[4, 7, 5],
+		[6, 8, 3]
+	]
+
+	print(stringify_square(valid_square))
+	print(is_lo_shu_magic_square(valid_square))
+	print()
+	print(stringify_square(invalid_square))
+	print(is_lo_shu_magic_square(invalid_square))
 
 '''
-	Determines if the provided multidimensional
-	list is indeed a Lo Shu Magic Square.
+	Print an appropriate message that
+	is predicated on the provided square
+	being a Lo Shu Magic.
 
 	@param {list} square
 	@param {bool}
 '''
-def is_magic_square(square):
+def is_lo_shu_magic_square(square):
 	try:
-		size = size_of_square(square)
+		size = get_square_size(square)
 	except SquareSizeError as e:
 		print(e)
 	else:
 		
-		magic_const = size * (size**2 + 1)/2
+		magic_const = get_magic_const(size)
 
-		if has_unique_cells(square, size) and \
-			has_magic_rows(square, size, magic_const) and \
-			has_magic_cols(square, size, magic_const) and \
-			has_magic_left_diagonal(square, size, magic_const) and \
-			has_magic_right_diagonal(square, size, magic_const):
+		if is_magic(square, size, magic_const):
 			return 'The list is a Lo Shu Magic Square.'
 		else:
 			return 'The list is NOT a Lo Shu Magic Square.'
+
+'''
+	Returns the magic constant for a 
+	particular square size.
+
+	@param size {list}
+	@return {int}
+'''
+def get_magic_const(size):
+	return size * (size**2 + 1)/2
+
+'''
+	If the provided square parameter is 
+	a Lo Shu Magic Square.
+
+	@param square {list}
+	@param size {int}
+	@param magic_const {int}
+	@return {bool}
+'''
+def is_magic(square, size, magic_const):
+	return has_valid_cells(square, size) and \
+		has_magic_rows(square, size, magic_const) and \
+		has_magic_cols(square, size, magic_const) and \
+		has_magic_left_diagonal(square, size, magic_const) and \
+		has_magic_right_diagonal(square, size, magic_const)
 
 '''
 	Get the size of the square. The size
@@ -72,7 +105,7 @@ def is_magic_square(square):
 	@param square {list}
 	@return num_rows {int}
 '''
-def size_of_square(square):
+def get_square_size(square):
 	num_rows = len(square)
 	cols = list(map(len, square))
 
@@ -91,7 +124,7 @@ def size_of_square(square):
 	@param size {int}
 	@return status {bool}
 '''
-def has_unique_cells(square, size):
+def has_valid_cells(square, size):
 	maximum = size**2 # maximum int permitted in cell
 	current = 1 # current int we are checking (1-n^2)
 	occurences = 0 # occurences of current int
@@ -164,8 +197,8 @@ def has_magic_cols(square, size, magic_const):
 '''
 def has_magic_left_diagonal(square, size, magic_const):
 	col_sums = []
-	for col in range(size):
-		col_sums.append(square[col][col])
+	for i in range(size):
+		col_sums.append(square[i][i])
 	return sum_list_items(col_sums) == magic_const
 
 '''
@@ -181,17 +214,37 @@ def has_magic_left_diagonal(square, size, magic_const):
 '''
 def has_magic_right_diagonal(square, size, magic_const):
 	col_sums = []
-	for col in range(size):
-		col_sums.append(square[col][(size - 1) - col])
+	for i in range(size):
+		col_sums.append(square[i][(size - 1) - i])
 	return sum_list_items(col_sums) == magic_const
+
+'''
+	Returns a string representation
+	of the square to be printed, etc.
+
+	@param square {list}
+	@return output {str}
+'''
+def stringify_square(square):
+	size = get_square_size(square)
+
+	output = ''
+	for row in range(size):
+		for col in range(size):
+			output += '' if col == 0 else ' '
+			output += str(square[row][col])
+		output += '\n' if row != size - 1 else ''
+	return output
 
 '''
 	Takes a list and reduces it to a single value 
 	by summing the items.
+
 	@param {list}
 	@return {any}
 '''
 def sum_list_items(list):
 	return reduce(lambda x, y: x + y, list)
 
-main()
+if __name__ == '__main__':
+	main()
